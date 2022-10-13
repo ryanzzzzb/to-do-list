@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List</title>
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <form id="form">
+        <div class="input">
+            <input type="text" id="input" required placeholder="Append Item" autocomplete="off">
+        </div>
+        
+        <input type="submit" value="Add" id="submit">
+    </form>
+    <ul id="list">
+    </ul>
+    <style>
+        body{
+            background: rgb(21, 21, 21);
+        }
+        h1 {
+            color: white;
+            text-align: center;
+        }
+        #form {
+            margin: auto;
+            text-align: center;
+            width: 30%;
+            padding: auto;
+            height: 100px;
+            padding: 20px 0px 0px 0px;
+            border-radius: 2px;
+        }
+
+        #input {
+            width: 80%;
+            height: 30px;
+            border-radius: 10px;
+        }
+        ::placeholder{
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        #submit{
+            margin-top: 10px;
+            background: rgb(193, 0, 68);
+            border-radius: 1px;
+            width: 40%;
+            height: 50px;
+            font-size: 2rem;
+        }
+
+        #list{
+            background: white;
+            list-style: none;
+            width: 50%;
+            margin: auto;
+        }
+
+        ul{
+            background-color: rgb(21, 21, 21);
+        }
+
+        li:hover {
+            background: grey;
+        }
+
+        .checked {
+            text-decoration: line-through;
+            background-color: grey;
+            color: white;
+        }
+    </style>
+    <script>
+        var form = document.getElementById("form").addEventListener("submit", (evt) => {
+            evt.preventDefault();
+            console.log(document.getElementById("input").value);
+            var input = document.getElementById("input");
+            var list = document.getElementById("list");
+
+            let newLi = () => {
+                var li = document.createElement("li");
+                var txt = document.createTextNode(document.getElementById("input").value);
+                li.appendChild(txt);
+                list.appendChild(li);
+            }
+
+            if (input.value != ""){
+                newLi();
+                document.getElementById("input").value = " ";
+            }
+
+        });
+
+        list.addEventListener("click", (e) => {
+            e.target.classList.toggle("checked");
+        });
+    </script>
+</body>
+</html>
